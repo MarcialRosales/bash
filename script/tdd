@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+[ -z "$DEBUG" ] || set -x
+
+main() {
+  resolve_dependencies
+
+  if [[ "$@" =~ ^w ]]
+  then
+    autotest
+  else
+    test_all
+  fi
+}
+
+resolve_dependencies() {
+  [[ "$(brew list)" =~ fsw ]] || brew install fsw
+
+  go get github.com/progrium/basht
+}
+
+autotest() {
+  local file
+
+  fsw --latency 0.2 -i '.bash' -e '.' lib test | while read -r file
+  do
+    is_test_file? "$file" || file="test/$(basename -s '.bash' "$file")_test.bash"
+    test_one "$file" && date
+  done
+}
+
+is_test_file?() {
+  local file
+  file="$1"
+
+  [[ "$file" =~ _test.bash$ ]]
+}
+
+test_all() {
+  basht test/*_test.bash
+}
+
+test_one() {
+  local file
+  file="$1"
+
+  [ -f "$file" ] && basht "$file"
+}
+
+main "$@"
