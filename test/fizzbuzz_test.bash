@@ -13,3 +13,8 @@ T_fizz_TrueWhen3() {
   fizz 3 ||
   $T_fail "Expected to be true when 3"
 }
+
+T_fizz_FalseWhen5() {
+  ! fizz 5 ||
+  $T_fail "Expected to be false when 5"
+}
