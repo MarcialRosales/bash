@@ -18,3 +18,8 @@ T_fizz_FalseWhen5() {
   ! fizz 5 ||
   $T_fail "Expected to be false when 5"
 }
+
+T_fizz_FailsWhenNoArgument() {
+  expect_to_contain "$(fizz 2>&1)" "first argument is REQUIRED" ||
+  $T_fail
+}
