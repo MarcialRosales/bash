@@ -20,6 +20,6 @@ T_fizz_FalseWhen5() {
 }
 
 T_fizz_FailsWhenNoArgument() {
-  expect_to_contain "$(fizz 2>&1)" "first argument is REQUIRED" ||
+  expect_to_contain "$(fizz 2>&1)" "first argument is required" ||
   $T_fail
 }
