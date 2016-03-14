@@ -9,27 +9,22 @@ export T_fail
 # shellcheck disable=SC1091
 . lib/fizzbuzz.bash
 
-T_fizz_TrueWhen3() {
-  fizz 3 ||
-  $T_fail "Expected to be true when 3"
+T_is_factor_of_TrueWhenDividesEqually() {
+  is_factor_of 3 3 ||
+  $T_fail "Expected to be true when it divides equally"
 }
 
-T_fizz_FalseWhen5() {
-  ! fizz 5 ||
-  $T_fail "Expected to be false when 5"
+T_is_factor_of_FalseWhenDoesNotDivideEqually() {
+  ! is_factor_of 3 5 ||
+  $T_fail "Expected to be false when it does not divide equally"
 }
 
-T_fizz_FailsWhenNoArgument() {
-  expect_to_contain "$(fizz 2>&1)" "first argument is required" ||
+T_is_factor_of_FailsWhenNoFirstArgument() {
+  expect_to_contain "$(is_factor_of 2>&1)" "first argument is what we divide" ||
   $T_fail
 }
 
-T_buzz_FalseWhen4() {
-  ! buzz 4 ||
-  $T_fail "Expected to be false when 4"
-}
-
-T_buzz_TrueWhen5() {
-  buzz 5 ||
-  $T_fail "Expected to be true when 5"
+T_is_factor_of_FailsWhenNoSecondArgument() {
+  expect_to_contain "$(is_factor_of 1 2>&1)" "second argument is what we divide by" ||
+  $T_fail
 }

@@ -1,15 +1,9 @@
 #!/usr/bin/env bash
 
-fizz() {
-  local value
-  value="${1:?first argument is required}"
+is_factor_of() {
+  local divident divisor
+   divident="${1:?first argument is what we divide}"
+   divisor="${2:?second argument is what we divide by}"
 
-  [ $(( value % 3 )) = 0 ]
-}
-
-buzz() {
-  local value
-  value="${1:?first argument is required}"
-
-  [ $(( value % 5 )) = 0 ]
+   [ $((divident % divisor )) = 0 ]
 }
