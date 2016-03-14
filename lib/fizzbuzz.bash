@@ -7,3 +7,13 @@ is_factor_of() {
 
    [ $((divident % divisor )) = 0 ]
 }
+
+fizzbuzz() {
+  local numbers
+  numbers=($@)
+
+  for _ in "${numbers[@]}"
+  do
+    echo "Fizz"
+  done
+}

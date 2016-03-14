@@ -28,3 +28,14 @@ T_is_factor_of_FailsWhenNoSecondArgument() {
   expect_to_contain "$(is_factor_of 1 2>&1)" "second argument is what we divide by" ||
   $T_fail
 }
+
+T_fizzbuzz_ReturnsFizzForNumbersDivisibleBy3() {
+  local actual expected
+  actual="$(fizzbuzz 3 12 102)"
+  expected="Fizz
+Fizz
+Fizz"
+
+  expect_to_equal "$actual" "$expected" ||
+  $T_fail
+}
