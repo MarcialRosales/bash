@@ -23,3 +23,13 @@ T_fizz_FailsWhenNoArgument() {
   expect_to_contain "$(fizz 2>&1)" "first argument is required" ||
   $T_fail
 }
+
+T_buzz_FalseWhen4() {
+  ! buzz 4 ||
+  $T_fail "Expected to be false when 4"
+}
+
+T_buzz_TrueWhen5() {
+  buzz 5 ||
+  $T_fail "Expected to be true when 5"
+}
