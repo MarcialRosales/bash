@@ -11,7 +11,7 @@ export T_fail
 
 T_fizzbuzz_GivenASeriesOfNumbersAsParameters() {
   local actual expected
-  actual="$(fizzbuzz 3 4 5 6 7 8 9 10 11 12 13 14 15)"
+  actual="$(fizzbuzz {3..15})"
   expected="Fizz
 4
 Buzz
