@@ -9,11 +9,12 @@ is_factor_of() {
 }
 
 fizzbuzz() {
-  local numbers
+  local number numbers
   numbers=($@)
 
-  for _ in "${numbers[@]}"
+  for number in "${numbers[@]}"
   do
-    echo "Fizz"
+    is_factor_of "$number" 5 && echo "Buzz" && continue
+    is_factor_of "$number" 3 && echo "Fizz" && continue
   done
 }

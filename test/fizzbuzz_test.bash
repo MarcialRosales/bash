@@ -39,3 +39,14 @@ Fizz"
   expect_to_equal "$actual" "$expected" ||
   $T_fail
 }
+
+T_fizzbuzz_ReturnsBuzzForNumbersDivisibleBy5() {
+  local actual expected
+  actual="$(fizzbuzz 5 20 100)"
+  expected="Buzz
+Buzz
+Buzz"
+
+  expect_to_equal "$actual" "$expected" ||
+  $T_fail
+}
