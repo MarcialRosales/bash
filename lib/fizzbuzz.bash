@@ -17,5 +17,6 @@ fizzbuzz() {
     is_factor_of "$number" 15 && echo "FizzBuzz" && continue
     is_factor_of "$number" 5 && echo "Buzz" && continue
     is_factor_of "$number" 3 && echo "Fizz" && continue
+    echo "$number"
   done
 }

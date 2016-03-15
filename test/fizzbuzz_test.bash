@@ -60,3 +60,13 @@ FizzBuzz"
   expect_to_equal "$actual" "$expected" ||
   $T_fail
 }
+
+T_fizzbuzz_ReturnsNumberIfNotDivisibleByKnownNumbers() {
+  local actual expected
+  actual="$(fizzbuzz 1 11)"
+  expected="1
+11"
+
+  expect_to_equal "$actual" "$expected" ||
+  $T_fail
+}
